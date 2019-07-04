@@ -41,12 +41,7 @@ cpSta=function(expression,ctVal=TRUE)
   Min_x_fold=-1/2^(Min_CP-GM_CP)
   Max_x_fold=2^(Max_CP-GM_CP)
   
-  SD_X_fold_f=function(x)
-  {
-    y=ifelse(x >mean(x),x-mean(x),mean(x)-x)
-    return(AVEDEV(2^y))
-  }
-  SD_x_fold=apply(expression, 2, SD_X_fold_f) 
+  SD_x_fold=2^SD_CP 
   
   rz=matrix(c(N,GM_CP,AM_CP,Min_CP,Max_CP,SD_CP,CV_CP,Min_x_fold,Max_x_fold,SD_x_fold),ncol=length(GM_CP),nrow = 10,byrow=T)
   colnames(rz)=colnames(expression)
